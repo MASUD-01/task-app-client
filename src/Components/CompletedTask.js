@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 
 const CompletedTask = () => {
+    const [com, setCom] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/completed', {
+            method: 'GET',
+        })
+            .then(res => res.json())
+            .then(data => setCom(data))
+    }, [com]);
     return (
-        <div>
-            complwted
+        <div className='wide'>
+            <h2 className='text-2xl'>View our completed Task</h2>
+
+            {
+                com.map(task => <p key={task._id}> {task.tas}</p>)
+            }
+
         </div>
     );
 };

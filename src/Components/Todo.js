@@ -9,7 +9,7 @@ const Todo = () => {
             .then(data => setTask(data))
     }, [])
     return (
-        <div>
+        <div className='wide'>
             <h1> Your Todo</h1>
 
             {
