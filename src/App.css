@@ -2,6 +2,32 @@
   text-align: center;
 }
 
+.navbars {
+  height: 10vh;
+  background-color: antiquewhite;
+}
+
+.navbars a {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.navbars a:hover {
+  /* color: #f0f1f2; */
+  font-size: 21px;
+  /* background-color: #282c34;
+  padding: 20px; */
+}
+
+input {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+button {
+  margin-left: 3px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,6 +58,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
