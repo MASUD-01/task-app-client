@@ -7,18 +7,18 @@ const Home = () => {
     // console.log(parts)
 
     useEffect(() => {
-        fetch('http://localhost:5000/user', {
+        fetch('http://localhost:5000/task', {
             method: 'GET',
         })
             .then(res => res.json())
             .then(data => setParts(data))
-    }, []);
+    }, [parts]);
     const onSubmit = data => {
         const tas = data.firstName
         const tasks = { tas }
         // console.log(tasks)
         //send to your database
-        fetch('http://localhost:5000/user', {
+        fetch('http://localhost:5000/task', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -29,7 +29,7 @@ const Home = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                alert('task added')
+                alert('task atask')
             })
     };
 
@@ -42,6 +42,10 @@ const Home = () => {
                 <input className="input input-bordered w-full max-w-xs" placeholder='add task' {...register("firstName")} />
                 <input className="btn" type="submit" />
             </form>
+
+            {
+                parts.map(task => <li key={task._id}>{task.tas}</li>)
+            }
 
 
         </div>
