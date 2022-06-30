@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 const Home = () => {
     const { register, handleSubmit } = useForm();
     const [parts, setParts] = useState([])
-    console.log(parts)
+    // console.log(parts)
 
     useEffect(() => {
         fetch('http://localhost:5000/user', {
@@ -14,26 +14,23 @@ const Home = () => {
             .then(data => setParts(data))
     }, []);
     const onSubmit = data => {
+        const tas = data.firstName
+        const tasks = { tas }
+        // console.log(tasks)
         //send to your database
-        fetch('http://localhost:5000/product', {
+        fetch('http://localhost:5000/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+
             },
-            body: JSON.stringify(data.firstName)
+            body: JSON.stringify(tasks)
         })
             .then(res => res.json())
-            .then(inserted => {
-                if (inserted.insertedId) {
-                    // toast.success('product added successfully');
-                    // reset()
-                }
-                else {
-                    // toast.error('failed to add')
-                }
+            .then(data => {
+                console.log(data)
+                alert('task added')
             })
-        console.log(data.firstName)
     };
 
 
