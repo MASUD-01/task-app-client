@@ -5,7 +5,7 @@ const Todo = () => {
     const [tasks, setTask] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/task')
+        fetch('https://enigmatic-castle-67715.herokuapp.com/task')
             .then(res => res.json())
             .then(data => setTask(data))
     }, [tasks])

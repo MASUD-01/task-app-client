@@ -7,7 +7,7 @@ const Home = () => {
     // console.log(parts)
 
     useEffect(() => {
-        fetch('http://localhost:5000/task', {
+        fetch('https://enigmatic-castle-67715.herokuapp.com/task', {
             method: 'GET',
         })
             .then(res => res.json())
@@ -18,7 +18,7 @@ const Home = () => {
         const tasks = { task }
         console.log(tasks)
         //send to your database
-        fetch('http://localhost:5000/task', {
+        fetch('https://enigmatic-castle-67715.herokuapp.com/task', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -29,14 +29,14 @@ const Home = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                alert('task atask')
+                alert('task added')
             })
     };
 
     const handledelete = (id, tas) => {
         console.log(id, tas)
         const name = { tas }
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://enigmatic-castle-67715.herokuapp.com/task/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -45,7 +45,7 @@ const Home = () => {
                 if (data.deletedCount > 0) {
 
 
-                    fetch('http://localhost:5000/completed', {
+                    fetch('https://enigmatic-castle-67715.herokuapp.com/completed', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -69,10 +69,10 @@ const Home = () => {
                 <input className="input input-bordered w-full max-w-xs" placeholder='add task' {...register("firstName")} />
                 <input className="btn" type="submit" />
             </form>
-            <div>
+            <div className='list-div'>
 
                 {
-                    parts.map(task => <li key={task._id} onClick={() => handledelete(task._id, task.task)}> <input type="checkbox" checked="checked" className="checkbox checkbox-xs" /> {task.task}</li>)
+                    parts.map(task => <ol><li key={task._id} onClick={() => handledelete(task._id, task.task)}> <input type="checkbox" checked="checked" className="checkbox checkbox-xs" /> {task.task}</li></ol>)
 
                 }
             </div>

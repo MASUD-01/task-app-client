@@ -4,7 +4,7 @@ import { useState } from 'react';
 const CompletedTask = () => {
     const [com, setCom] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/completed', {
+        fetch('https://enigmatic-castle-67715.herokuapp.com/completed', {
             method: 'GET',
         })
             .then(res => res.json())

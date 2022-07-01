@@ -9,7 +9,7 @@ const UpdateUser = () => {
     const { register, handleSubmit } = useForm();
     console.log(user)
     useEffect(() => {
-        fetch(`http://localhost:5000/update/${id}`)
+        fetch(`https://enigmatic-castle-67715.herokuapp.com/update/${id}`)
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
@@ -19,7 +19,7 @@ const UpdateUser = () => {
         const tasks = { task }
         console.log(tasks)
         //send to your database
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://enigmatic-castle-67715.herokuapp.com/task/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
