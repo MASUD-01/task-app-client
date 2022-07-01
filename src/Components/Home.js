@@ -14,9 +14,9 @@ const Home = () => {
             .then(data => setParts(data))
     }, [parts]);
     const onSubmit = data => {
-        const tas = data.firstName
-        const tasks = { tas }
-        // console.log(tasks)
+        const task = data.firstName
+        const tasks = { task }
+        console.log(tasks)
         //send to your database
         fetch('http://localhost:5000/task', {
             method: 'POST',
@@ -35,6 +35,7 @@ const Home = () => {
 
     const handledelete = (id, tas) => {
         console.log(id, tas)
+        const name = { tas }
         fetch(`http://localhost:5000/task/${id}`, {
             method: 'DELETE'
         })
@@ -50,7 +51,7 @@ const Home = () => {
                             'content-type': 'application/json',
 
                         },
-                        body: JSON.stringify({ tas })
+                        body: JSON.stringify(name)
                     })
                         .then(res => res.json())
                         .then(data => {
@@ -68,10 +69,13 @@ const Home = () => {
                 <input className="input input-bordered w-full max-w-xs" placeholder='add task' {...register("firstName")} />
                 <input className="btn" type="submit" />
             </form>
+            <div>
 
-            {
-                parts.map(task => <li onClick={() => handledelete(task._id, task.tas)} key={task._id}><input type="checkbox" checked="checked" className="checkbox checkbox-xs" /> {task.tas}</li>)
-            }
+                {
+                    parts.map(task => <li key={task._id} onClick={() => handledelete(task._id, task.task)}> <input type="checkbox" checked="checked" className="checkbox checkbox-xs" /> {task.task}</li>)
+
+                }
+            </div>
 
 
         </div>
